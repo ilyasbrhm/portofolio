@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILYAS IMAM IBRAHIM | 3D Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+        }
+        
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.5s ease;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-3d:hover {
+            transform: translateY(-10px) rotateX(5deg);
+        }
+        
+        .skill-pill {
+            transition: all 0.3s ease;
+            transform: translateZ(0);
+        }
+        
+        .skill-pill:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -20px;
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: #3b82f6;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: -26px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #3b82f6;
+            border: 2px solid #1e3a8a;
+        }
+        
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        
+        .content-wrapper {
+            position: relative;
+            z-index: 10;
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .glow {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.7);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, #3b82f6, transparent);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- 3D Background -->
+    <div id="particles-js"></div>
+    
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <!-- Floating Navigation -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-opacity-90 backdrop-blur-md bg-gray-900 shadow-lg">
+            <div class="container mx-auto px-6 py-4">
+                <div class="flex justify-between items-center">
+                    <div class="text-2xl font-bold text-blue-400 glow">Portofolio</div>
+                    <div class="hidden md:flex space-x-8">
+                        <a href="#home" class="text-blue-300 hover:text-blue-400 transition">Home</a>
+                        <a href="#about" class="text-blue-300 hover:text-blue-400 transition">About</a>
+                        <a href="#education" class="text-blue-300 hover:text-blue-400 transition">Education</a>
+                        <a href="#experience" class="text-blue-300 hover:text-blue-400 transition">Experience</a>
+                        <a href="#skills" class="text-blue-300 hover:text-blue-400 transition">Skills</a>
+                        <a href="#contact" class="text-blue-300 hover:text-blue-400 transition">Contact</a>
+                    </div>
+                    <button class="md:hidden text-blue-400 focus:outline-none">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero-gradient min-h-screen flex items-center pt-20">
+            <div class="container mx-auto px-6 py-20">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="md:w-1/2 mb-10 md:mb-0">
+                        <h1 class="text-4xl md:text-6xl font-bold mb-4">
+                            <span class="text-blue-400">ILYAS</span> IMAM IBRAHIM
+                        </h1>
+                        <div class="text-xl md:text-2xl mb-6">
+                            <span id="typed" class="text-blue-300"></span>
+                        </div>
+                        <p class="text-gray-300 mb-8 max-w-lg">
+                            IT Support Specialist with passion in UI/UX Design and Data Analysis. Currently pursuing Information Systems degree at Gunadarma University.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full font-medium transition transform hover:scale-105">
+                                Contact Me
+                            </a>
+                            <a href="#about" class="border-2 border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white px-6 py-3 rounded-full font-medium transition transform hover:scale-105">
+                                Learn More
+                            </a>
+                        </div>
+                    </div>
+                    <div class="md:w-1/2 flex justify-center">
+                        <img 
+                            src="IMG_3259.JPG" 
+                            alt="Profile Image" 
+                            class="w-64 h-64 md:w-80 md:h-80 rounded-full shadow-2xl object-cover floating"/>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center section-title">
+                    <span class="text-blue-400">About</span> Me
+                </h2>
+                
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <div class="lg:w-1/3">
+                        <div class="card-3d bg-gray-800 rounded-xl p-8 h-full">
+                            <div class="text-center mb-6">
+                                <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center text-4xl font-bold text-white mb-4">
+                                    <img 
+                                        src="img_3259.jpg" 
+                                        alt="User Profile" 
+                                        class="w-32 h-32 mx-auto rounded-full object-cover shadow-lg mb"/>
+                                </div>
+                                <h3 class="text-2xl font-bold text-blue-400">ILYAS IMAM IBRAHIM</h3>
+                                <p class="text-gray-400">IT Support | UI/UX & Data Enthusiast</p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope text-blue-400 mr-3"></i>
+                                    <span>ilyasbrhm0@gmail.com</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-phone text-blue-400 mr-3"></i>
+                                    <span>085215246240</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-blue-400 mr-3"></i>
+                                    <span>DKI Jakarta, Indonesia</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fab fa-linkedin text-blue-400 mr-3"></i>
+                                    <a href="https://linkedin.com/in/ilyasbrhm" target="_blank" class="hover:underline">linkedin.com/in/ilyasbrhm</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="lg:w-2/3">
+                        <div class="card-3d bg-gray-800 rounded-xl p-8 h-full">
+                            <h3 class="text-2xl font-bold text-blue-400 mb-6">Profile Summary</h3>
+                            <p class="text-gray-300 mb-6">
+                                Undergraduate student of Information Systems at Gunadarma University with focus on information system development, UI/UX design, and database management. 
+                                Actively participating in the Independent Study Program (MBKM) at Dicoding Coding Camp powered by DBS Foundation with specialization in Machine Learning and Data Analysis.
+                            </p>
+                            <p class="text-gray-300 mb-6">
+                                Experienced as IT Support Laboratory Assistant at Advanced Accounting Laboratory B. Proficient in SQL, HTML, and IT troubleshooting. 
+                                Familiar with designing user interfaces and solving technical problems both in software and hardware.
+                            </p>
+                            <p class="text-gray-300">
+                                Known for being responsive, collaborative, and continuously committed to self-development.
+                            </p>
+                            
+                            <div class="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
+                                <div class="bg-gray-700 rounded-lg p-4 text-center">
+                                    <div class="text-3xl font-bold text-blue-400">3.63</div>
+                                    <div class="text-gray-400">GPA</div>
+                                </div>
+                                <div class="bg-gray-700 rounded-lg p-4 text-center">
+                                    <div class="text-3xl font-bold text-blue-400">5+</div>
+                                    <div class="text-gray-400">Certifications</div>
+                                </div>
+                                <div class="bg-gray-700 rounded-lg p-4 text-center">
+                                    <div class="text-3xl font-bold text-blue-400">2+</div>
+                                    <div class="text-gray-400">Years Experience</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Education Section -->
+        <section id="education" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center section-title">
+                    <span class="text-blue-400">Education</span> & Certification
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Education Timeline -->
+                    <div class="card-3d bg-gray-900 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-6">Education</h3>
+                        
+                        <div class="relative pl-8 timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h4 class="text-xl font-bold">Universitas Gunadarma</h4>
+                            <p class="text-blue-300">S1 Sistem Informasi</p>
+                            <p class="text-gray-400">2022 – Present</p>
+                            <p class="text-gray-300 mt-2">GPA: 3.63 / 4.00</p>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-blue-400 mb-6">Independent Study (MBKM)</h3>
+                            
+                            <div class="relative pl-8 timeline-item">
+                                <div class="timeline-dot"></div>
+                                <h4 class="text-xl font-bold">Dicoding Coding Camp powered by DBS Foundation</h4>
+                                <p class="text-blue-300">Machine Learning & Data Analysis Track</p>
+                                <p class="text-gray-400">February 2025 – Present</p>
+                                <div class="text-gray-300 mt-2">
+                                    <p>Studying several intensive project-based courses:</p>
+                                    <ul class="list-disc pl-5 mt-2 space-y-1">
+                                        <li>Belajar Analisis Data dengan Python</li>
+                                        <li>Belajar Machine Learning untuk Pemula</li>
+                                        <li>Belajar Pengembangan Machine Learning</li>
+                                        <li>Belajar Fundamental Pemrosesan Data</li>
+                                        <li>Machine Learning Terapan</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Certification -->
+                    <div class="card-3d bg-gray-900 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-6">Certifications</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition">
+                                <h4 class="text-xl font-bold">LePKom Mandiri Berbasis Virtual</h4>
+                                <p class="text-blue-300">2022 – Present</p>
+                                <div class="mt-2">
+                                    <span class="inline-block bg-blue-900 text-blue-300 px-3 py-1 rounded-full text-sm mr-2 mb-2">SQL</span>
+                                    <span class="inline-block bg-blue-900 text-blue-300 px-3 py-1 rounded-full text-sm mr-2 mb-2">Oracle Database</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-gray-800 rounded-lg p-6 hover:bg-gray-700 transition">
+                                <h4 class="text-xl font-bold">Dicoding (through Independent Study)</h4>
+                                <div class="mt-3 space-y-2">
+                                    <p class="flex items-center">
+                                        <i class="fas fa-certificate text-blue-400 mr-2"></i>
+                                        Belajar Analisis Data dengan Python
+                                    </p>
+                                    <p class="flex items-center">
+                                        <i class="fas fa-certificate text-blue-400 mr-2"></i>
+                                        Belajar Machine Learning untuk Pemula
+                                    </p>
+                                    <p class="flex items-center">
+                                        <i class="fas fa-certificate text-blue-400 mr-2"></i>
+                                        Belajar Pengembangan Machine Learning
+                                    </p>
+                                    <p class="flex items-center">
+                                        <i class="fas fa-certificate text-blue-400 mr-2"></i>
+                                        Belajar Fundamental Pemrosesan Data
+                                    </p>
+                                    <p class="flex items-center">
+                                        <i class="fas fa-certificate text-blue-400 mr-2"></i>
+                                        Machine Learning Terapan
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center section-title">
+                    <span class="text-blue-400">Work</span> Experience
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Work Experience -->
+                    <div class="card-3d bg-gray-800 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-6">Professional Experience</h3>
+                        
+                        <div class="relative pl-8 timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h4 class="text-xl font-bold">Asisten Laboratorium (IT Support)</h4>
+                            <p class="text-blue-300">Laboratorium Akuntansi Lanjut B – Universitas Gunadarma</p>
+                            <p class="text-gray-400">January 2025 – Present</p>
+                            <div class="text-gray-300 mt-2">
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>Assisted lab operations and academic activity coordination</li>
+                                    <li>Managed practicum scores and processed administrative data</li>
+                                    <li>Developed and optimized internal laboratory information systems, including attendance systems and practicum score input</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Committee & Volunteer -->
+                    <div class="card-3d bg-gray-800 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-6">Committee & Volunteer</h3>
+                        
+                        <div class="relative pl-8 timeline-item">
+                            <div class="timeline-dot"></div>
+                            <h4 class="text-xl font-bold">Volunteer</h4>
+                            <p class="text-blue-300">Olimpiade Gunadarma 2024</p>
+                            <p class="text-gray-400">August 2024</p>
+                            <div class="text-gray-300 mt-2">
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>Handled equipment distribution and event arrangement</li>
+                                    <li>Responsible for security team (body check and confiscation of prohibited items)</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="relative pl-8 timeline-item mt-8">
+                            <div class="timeline-dot"></div>
+                            <h4 class="text-xl font-bold">Panitia PKKMB Universitas Gunadarma 2024</h4>
+                            <p class="text-gray-400">September 2024</p>
+                            <div class="text-gray-300 mt-2">
+                                <ul class="list-disc pl-5 space-y-1">
+                                    <li>Became a mentor for new student groups</li>
+                                    <li>Guided participants and provided technical directions and information related to PKKMB implementation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center section-title">
+                    <span class="text-blue-400">Technical</span> & Soft Skills
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <!-- Technical Skills -->
+                    <div class="card-3d bg-gray-900 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-6">Technical Skills</h3>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-3">Database Management</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">SQL</span>
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">Oracle</span>
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">DBMS</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-3">UI/UX Design</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">Figma</span>
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">Uizard.io</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-3">Troubleshooting IT</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">Hardware</span>
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">Software</span>
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">Information Systems</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-3">Web Development</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">HTML</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <h4 class="text-lg font-semibold mb-3">Machine Learning</h4>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">Scikit-Learn</span>
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">Pandas</span>
+                                <span class="skill-pill bg-blue-900 text-blue-300 px-4 py-2 rounded-full">Data Preprocessing</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Soft Skills -->
+                    <div class="card-3d bg-gray-900 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-6">Soft Skills</h3>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-800 rounded-lg p-4 text-center transform transition hover:scale-105">
+                                <i class="fas fa-bolt text-blue-400 text-3xl mb-2"></i>
+                                <h4 class="font-semibold">Quick Response</h4>
+                            </div>
+                            <div class="bg-gray-800 rounded-lg p-4 text-center transform transition hover:scale-105">
+                                <i class="fas fa-lightbulb text-blue-400 text-3xl mb-2"></i>
+                                <h4 class="font-semibold">Creative</h4>
+                            </div>
+                            <div class="bg-gray-800 rounded-lg p-4 text-center transform transition hover:scale-105">
+                                <i class="fas fa-puzzle-piece text-blue-400 text-3xl mb-2"></i>
+                                <h4 class="font-semibold">Solution-Oriented</h4>
+                            </div>
+                            <div class="bg-gray-800 rounded-lg p-4 text-center transform transition hover:scale-105">
+                                <i class="fas fa-users text-blue-400 text-3xl mb-2"></i>
+                                <h4 class="font-semibold">Collaborative</h4>
+                            </div>
+                            <div class="bg-gray-800 rounded-lg p-4 text-center transform transition hover:scale-105">
+                                <i class="fas fa-comments text-blue-400 text-3xl mb-2"></i>
+                                <h4 class="font-semibold">Team Communication</h4>
+                            </div>
+                            <div class="bg-gray-800 rounded-lg p-4 text-center transform transition hover:scale-105">
+                                <i class="fas fa-brain text-blue-400 text-3xl mb-2"></i>
+                                <h4 class="font-semibold">Problem Solving</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-2xl font-bold text-blue-400 mb-6">Languages</h3>
+                            <div class="space-y-4">
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="font-medium">Indonesian</span>
+                                        <span class="text-blue-300">Native</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-2">
+                                        <div class="bg-blue-500 h-2 rounded-full" style="width: 100%"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="flex justify-between mb-1">
+                                        <span class="font-medium">English</span>
+                                        <span class="text-blue-300">Professional</span>
+                                    </div>
+                                    <div class="w-full bg-gray-700 rounded-full h-2">
+                                        <div class="bg-blue-500 h-2 rounded-full" style="width: 80%"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold mb-12 text-center section-title">
+                    <span class="text-blue-400">Get</span> In Touch
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="card-3d bg-gray-800 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-6">Contact Information</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-900 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Email</h4>
+                                    <p class="text-gray-300">ilyasbrhm0@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-900 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone text-blue-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Phone</h4>
+                                    <p class="text-gray-300">085215246240</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-900 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">Location</h4>
+                                    <p class="text-gray-300">DKI Jakarta, Indonesia</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="bg-blue-900 p-3 rounded-full mr-4">
+                                    <i class="fab fa-linkedin-in text-blue-400 text-xl"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold">LinkedIn</h4>
+                                    <a href="https://linkedin.com/in/ilyasbrhm" target="_blank" class="text-gray-300 hover:underline">linkedin.com/in/ilyasbrhm</a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h3 class="text-xl font-bold text-blue-400 mb-4">Connect With Me</h3>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-blue-900 hover:bg-blue-800 w-12 h-12 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-linkedin-in text-blue-400 text-xl"></i>
+                                </a>
+                                <a href="#" class="bg-blue-900 hover:bg-blue-800 w-12 h-12 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-github text-blue-400 text-xl"></i>
+                                </a>
+                                <a href="#" class="bg-blue-900 hover:bg-blue-800 w-12 h-12 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-instagram text-blue-400 text-xl"></i>
+                                </a>
+                                <a href="#" class="bg-blue-900 hover:bg-blue-800 w-12 h-12 rounded-full flex items-center justify-center transition">
+                                    <i class="fab fa-twitter text-blue-400 text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-3d bg-gray-800 rounded-xl p-8">
+                        <h3 class="text-2xl font-bold text-blue-400 mb-6">Send Me a Message</h3>
+                        
+                        <form class="space-y-4">
+                            <div>
+                                <label for="name" class="block mb-2 font-medium">Your Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Your Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="subject" class="block mb-2 font-medium">Subject</label>
+                                <input type="text" id="subject" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="message" class="block mb-2 font-medium">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition transform hover:scale-[1.02]">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="bg-gray-900 py-8 border-t border-gray-800">
+            <div class="container mx-auto px-6">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="text-xl font-bold text-blue-400 mb-4 md:mb-0">ILYAS IMAM IBRAHIM</div>
+                    <div class="text-gray-400 text-sm">
+                        © 2024 All Rights Reserved
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Typed.js initialization
+        document.addEventListener('DOMContentLoaded', function() {
+            var typed = new Typed('#typed', {
+                strings: [
+                    "IT Support Specialist",
+                    "UI/UX Enthusiast",
+                    "Data Analysis Learner",
+                    "Information Systems Student"
+                ],
+                typeSpeed: 50,
+                backSpeed: 30,
+                loop: true,
+                showCursor: true,
+                cursorChar: '|'
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuButton = document.querySelector('.md\\:hidden');
+            const mobileMenu = document.querySelector('.hidden.md\\:flex');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                mobileMenu.classList.toggle('flex-col');
+                mobileMenu.classList.toggle('absolute');
+                mobileMenu.classList.toggle('top-16');
+                mobileMenu.classList.toggle('left-0');
+                mobileMenu.classList.toggle('right-0');
+                mobileMenu.classList.toggle('bg-gray-900');
+                mobileMenu.classList.toggle('p-4');
+                mobileMenu.classList.toggle('space-y-4');
+                mobileMenu.classList.toggle('space-x-8');
+                mobileMenu.classList.toggle('shadow-lg');
+            });
+        });
+        
+        // Particles.js configuration
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if particles.js is loaded
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS('particles-js', {
+                    "particles": {
+                        "number": {
+                            "value": 80,
+                            "density": {
+                                "enable": true,
+                                "value_area": 800
+                            }
+                        },
+                        "color": {
+                            "value": "#3b82f6"
+                        },
+                        "shape": {
+                            "type": "circle",
+                            "stroke": {
+                                "width": 0,
+                                "color": "#000000"
+                            },
+                            "polygon": {
+                                "nb_sides": 5
+                            }
+                        },
+                        "opacity": {
+                            "value": 0.5,
+                            "random": false,
+                            "anim": {
+                                "enable": false,
+                                "speed": 1,
+                                "opacity_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "size": {
+                            "value": 3,
+                            "random": true,
+                            "anim": {
+                                "enable": false,
+                                "speed": 40,
+                                "size_min": 0.1,
+                                "sync": false
+                            }
+                        },
+                        "line_linked": {
+                            "enable": true,
+                            "distance": 150,
+                            "color": "#3b82f6",
+                            "opacity": 0.4,
+                            "width": 1
+                        },
+                        "move": {
+                            "enable": true,
+                            "speed": 2,
+                            "direction": "none",
+                            "random": false,
+                            "straight": false,
+                            "out_mode": "out",
+                            "bounce": false,
+                            "attract": {
+                                "enable": false,
+                                "rotateX": 600,
+                                "rotateY": 1200
+                            }
+                        }
+                    },
+                    "interactivity": {
+                        "detect_on": "canvas",
+                        "events": {
+                            "onhover": {
+                                "enable": true,
+                                "mode": "grab"
+                            },
+                            "onclick": {
+                                "enable": true,
+                                "mode": "push"
+                            },
+                            "resize": true
+                        },
+                        "modes": {
+                            "grab": {
+                                "distance": 140,
+                                "line_linked": {
+                                    "opacity": 1
+                                }
+                            },
+                            "bubble": {
+                                "distance": 400,
+                                "size": 40,
+                                "duration": 2,
+                                "opacity": 8,
+                                "speed": 3
+                            },
+                            "repulse": {
+                                "distance": 200,
+                                "duration": 0.4
+                            },
+                            "push": {
+                                "particles_nb": 4
+                            },
+                            "remove": {
+                                "particles_nb": 2
+                            }
+                        }
+                    },
+                    "retina_detect": true
+                });
+            }
+        });
+    </script>
+</body>
+</html>
