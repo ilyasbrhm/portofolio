@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth" class="dark">
+<html lang="en" class="scroll-smooth dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,37 +50,55 @@
         }
     </script>
     <script>
-        // Dark mode toggle logic
-        document.addEventListener('DOMContentLoaded', function () {
-            const toggle = document.getElementById('toggle');
-            const html = document.documentElement;
+// Dark mode check before page renders
+  if (
+    localStorage.getItem("theme") === "dark" ||
+    (!localStorage.getItem("theme") &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches)
+  ) {
+    document.documentElement.classList.add("dark");
+  } else {
+    document.documentElement.classList.remove("dark");
+  }
 
-            // Load saved mode
-            if (localStorage.getItem('theme') === 'dark') {
-                html.classList.add('dark');
-                toggle.checked = true;
-            }
-
-            toggle.addEventListener('change', function () {
-                if (toggle.checked) {
-                    html.classList.add('dark');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    html.classList.remove('dark');
-                    localStorage.setItem('theme', 'light');
-                }
-            });
-        });
-
-    document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", function () {
+    const toggle = document.getElementById("toggle");
+    const html = document.documentElement;
     const menuBtn = document.getElementById("menu-btn");
     const mobileMenu = document.getElementById("mobile-menu");
 
-    menuBtn.addEventListener("click", function () {
-    mobileMenu.classList.toggle("hidden");
+    // Load saved theme
+    if (localStorage.getItem("theme") === "dark") {
+      html.classList.add("dark");
+      toggle.checked = true;
+    } else {
+      html.classList.remove("dark");
+      toggle.checked = false;
+    }
+
+    // Toggle theme
+    toggle.addEventListener("change", function () {
+      if (toggle.checked) {
+        html.classList.add("dark");
+        localStorage.setItem("theme", "dark");
+      } else {
+        html.classList.remove("dark");
+        localStorage.setItem("theme", "light");
+      }
     });
+
+    // Toggle mobile menu
+    menuBtn.addEventListener("click", function () {
+      mobileMenu.classList.toggle("hidden");
+    });
+
+    // Optional: Close mobile menu on page load (in case it's open accidentally)
+    if (!mobileMenu.classList.contains("hidden")) {
+      mobileMenu.classList.add("hidden");
+    }
   });
-    </script>
+</script>
+
     <style>
         body {
             font-family: 'Poppins', sans-serif;
