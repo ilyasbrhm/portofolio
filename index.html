@@ -10,6 +10,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
+ // Dark mode check before CSS applies
+      if (
+        localStorage.getItem("theme") === "dark" ||
+        (!localStorage.getItem("theme") &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches)
+      ) {
+        document.documentElement.classList.add("dark");
+      } else {
+        document.documentElement.classList.remove("dark");
+      }
+
         tailwind.config = {
             darkMode: 'class',
             theme: {
@@ -50,16 +61,6 @@
         }
     </script>
     <script>
-// Dark mode check before page renders
-  if (
-    localStorage.getItem("theme") === "dark" ||
-    (!localStorage.getItem("theme") &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
 
   document.addEventListener("DOMContentLoaded", function () {
     const toggle = document.getElementById("toggle");
@@ -225,9 +226,10 @@
                         Turning complex data into insight-driven solutions through Python, SQL, ML, and UX-driven apps.
                     </p>
                     <div class="flex flex-wrap gap-4 mb-8">
-                        <a href="#" class="px-6 py-3 bg-navy-700 hover:bg-navy-800 text-white rounded-lg font-medium transition duration-300 shadow-lg hover:shadow-navy-700/30">
-                            Download CV <i class="fas fa-download ml-2"></i>
+                        <a href="#projects" class="px-6 py-3 bg-navy-700 hover:bg-navy-800 text-white rounded-lg font-medium transition duration-300 shadow-lg hover:shadow-navy-700/30">
+                            View Projects <i class="fas fa-folder-open ml-2"></i>
                         </a>
+
                         <a href="#contact" class="px-6 py-3 bg-cyan-500 hover:bg-cyan-600 text-white rounded-lg font-medium transition duration-300 shadow-lg hover:shadow-cyan-500/30">
                             Contact Me <i class="fas fa-paper-plane ml-2"></i>
                         </a>
