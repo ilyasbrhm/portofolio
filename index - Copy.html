@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilyas Imam Ibrahim | Data Analyst & ML Engineer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0f172a',
+                        secondary: '#0369a1',
+                        accent: '#06b6d4',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(6, 182, 212, 0.2);
+        }
+        
+        .skill-badge:hover {
+            transform: scale(1.05);
+        }
+        
+        .dark .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(45deg, #06b6d4, #3b82f6);
+        }
+        
+        .light .gradient-text {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            background-image: linear-gradient(45deg, #0369a1, #0f172a);
+        }
+        
+        #menu-toggle:checked + #menu {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/90 dark:bg-gray-900/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="text-xl font-bold text-primary dark:text-white flex items-center">
+                        <span class="gradient-text">Ilyas Imam</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">About</a>
+                    <a href="#projects" class="text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">Projects</a>
+                    <a href="#skills" class="text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">Skills</a>
+                    <a href="#certificates" class="text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">Certificates</a>
+                    <a href="#contact" class="text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">Contact</a>
+                    
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">
+                        <i id="theme-icon" class="fas fa-moon"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" class="text-gray-700 dark:text-gray-300">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white dark:bg-gray-800 shadow-lg">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#about" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">About</a>
+                <a href="#projects" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">Projects</a>
+                <a href="#skills" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">Skills</a>
+                <a href="#certificates" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">Certificates</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">Contact</a>
+                <div class="px-3 py-2">
+                    <button id="mobile-theme-toggle" class="text-gray-700 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">
+                        <i id="mobile-theme-icon" class="fas fa-moon"></i> Toggle Theme
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-24 pb-16 md:pt-32 md:pb-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="flex flex-col md:flex-row items-center justify-between">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+                    Hi, I'm <span class="gradient-text">Ilyas</span> — <br>
+                    <span class="text-secondary dark:text-accent">Data Analyst</span> & <span class="text-secondary dark:text-accent">ML Engineer</span>
+                </h1>
+                <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300 mb-8">
+                    Turning data into meaningful insights through analysis, machine learning, and innovation.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#contact" class="px-6 py-3 bg-secondary dark:bg-accent text-white rounded-lg hover:bg-opacity-90 transition shadow-lg">
+                        Contact Me
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition flex items-center gap-2">
+                        <i class="fab fa-linkedin text-blue-600"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com" target="_blank" class="px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition flex items-center gap-2">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
+                    <div class="absolute inset-0 bg-gradient-to-br from-secondary to-accent rounded-full opacity-20 blur-xl"></div>
+                    <div class="relative w-full h-full flex items-center justify-center">
+                        <div class="w-full h-full rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-xl">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                                 alt="Ilyas Imam Ibrahim" 
+                                 class="w-full h-full object-cover">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto bg-gray-50 dark:bg-gray-800/50 rounded-3xl my-8">
+        <div class="flex flex-col md:flex-row items-center">
+            <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-lg">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" 
+                         alt="Ilyas Imam Ibrahim" 
+                         class="w-full h-full object-cover">
+                </div>
+            </div>
+            <div class="md:w-2/3 md:pl-12">
+                <h2 class="text-3xl font-bold mb-6 text-secondary dark:text-accent">About Me</h2>
+                <div class="space-y-4 text-gray-700 dark:text-gray-300">
+                    <p>
+                        I'm an Information Systems student at Gunadarma University with a GPA of 3.60/4.00, currently working as an IT Support Assistant. 
+                        I'm passionate about data and machine learning, with a strong foundation in both theoretical concepts and practical applications.
+                    </p>
+                    <p>
+                        As a certified Machine Learning Engineer, I have hands-on experience with Flutter, Python, SQL, Power BI, Tableau, and UI/UX design. 
+                        I've built over 5 end-to-end AI/ML projects including recommendation systems and sentiment analysis applications.
+                    </p>
+                    <p>
+                        My approach combines technical expertise with creative problem-solving to transform raw data into actionable insights. 
+                        I'm particularly interested in the intersection of machine learning and user experience, creating intelligent systems that are both powerful and intuitive.
+                    </p>
+                </div>
+                <div class="mt-8 flex flex-wrap gap-4">
+                    <div class="bg-white dark:bg-gray-700 px-4 py-3 rounded-lg shadow-sm flex items-center gap-2">
+                        <i class="fas fa-graduation-cap text-secondary dark:text-accent"></i>
+                        <span>Gunadarma University</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 px-4 py-3 rounded-lg shadow-sm flex items-center gap-2">
+                        <i class="fas fa-briefcase text-secondary dark:text-accent"></i>
+                        <span>IT Support Assistant</span>
+                    </div>
+                    <div class="bg-white dark:bg-gray-700 px-4 py-3 rounded-lg shadow-sm flex items-center gap-2">
+                        <i class="fas fa-certificate text-secondary dark:text-accent"></i>
+                        <span>ML Engineer Certified</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 text-center text-secondary dark:text-accent">My Projects</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Project 1 -->
+            <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition duration-300">
+                <div class="h-48 bg-gradient-to-r from-secondary to-accent flex items-center justify-center">
+                    <i class="fas fa-film text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">MoodFlix</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Movie Recommendation System using Artificial Neural Networks with Flask backend.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Python</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">TensorFlow</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Flask</span>
+                    </div>
+                    <a href="#" class="text-secondary dark:text-accent hover:underline flex items-center gap-1">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition duration-300">
+                <div class="h-48 bg-gradient-to-r from-secondary to-accent flex items-center justify-center">
+                    <i class="fas fa-comment-dots text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Sentiment Analysis</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Analyzing MyTelkomsel reviews using IndoBERT for sentiment classification.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Python</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Transformers</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">NLP</span>
+                    </div>
+                    <a href="#" class="text-secondary dark:text-accent hover:underline flex items-center gap-1">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition duration-300">
+                <div class="h-48 bg-gradient-to-r from-secondary to-accent flex items-center justify-center">
+                    <i class="fas fa-database text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">ETL Pipeline</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Automated Extract, Transform, Load pipeline for data processing and warehousing.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Python</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Pandas</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">SQL</span>
+                    </div>
+                    <a href="#" class="text-secondary dark:text-accent hover:underline flex items-center gap-1">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition duration-300">
+                <div class="h-48 bg-gradient-to-r from-secondary to-accent flex items-center justify-center">
+                    <i class="fas fa-chart-line text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Data Dashboard</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Interactive data analysis dashboard built with Python and Streamlit.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Python</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Streamlit</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Matplotlib</span>
+                    </div>
+                    <a href="#" class="text-secondary dark:text-accent hover:underline flex items-center gap-1">
+                        <i class="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition duration-300">
+                <div class="h-48 bg-gradient-to-r from-secondary to-accent flex items-center justify-center">
+                    <i class="fas fa-image text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Image Classification</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Convolutional Neural Network for image classification with custom dataset.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Python</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">TensorFlow</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">CNN</span>
+                    </div>
+                    <a href="#" class="text-secondary dark:text-accent hover:underline flex items-center gap-1">
+                        <i class="fab fa-github"></i> View on GitHub
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Project 6 -->
+            <div class="project-card bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md transition duration-300">
+                <div class="h-48 bg-gradient-to-r from-secondary to-accent flex items-center justify-center">
+                    <i class="fas fa-car text-white text-6xl"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">IndoDriver App</h3>
+                    <p class="text-gray-600 dark:text-gray-300 mb-4">
+                        Flutter application for ride-hailing service with real-time tracking.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Flutter</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Dart</span>
+                        <span class="text-xs px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full">Firebase</span>
+                    </div>
+                    <a href="#" class="text-secondary dark:text-accent hover:underline flex items-center gap-1">
+                        <i class="fab fa-google-play"></i> Play Store
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto bg-gray-50 dark:bg-gray-800/50 rounded-3xl my-8">
+        <h2 class="text-3xl font-bold mb-12 text-center text-secondary dark:text-accent">Skills & Technologies</h2>
+        
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+            <!-- Skill 1 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fab fa-python text-4xl text-blue-600 mb-2"></i>
+                <span class="font-medium">Python</span>
+            </div>
+            
+            <!-- Skill 2 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fas fa-database text-4xl text-blue-400 mb-2"></i>
+                <span class="font-medium">SQL</span>
+            </div>
+            
+            <!-- Skill 3 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fas fa-chart-bar text-4xl text-orange-500 mb-2"></i>
+                <span class="font-medium">Power BI</span>
+            </div>
+            
+            <!-- Skill 4 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fas fa-chart-pie text-4xl text-blue-800 mb-2"></i>
+                <span class="font-medium">Tableau</span>
+            </div>
+            
+            <!-- Skill 5 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fab fa-tensorflow text-4xl text-yellow-600 mb-2"></i>
+                <span class="font-medium">TensorFlow</span>
+            </div>
+            
+            <!-- Skill 6 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fas fa-brain text-4xl text-purple-600 mb-2"></i>
+                <span class="font-medium">Scikit-learn</span>
+            </div>
+            
+            <!-- Skill 7 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fab fa-git-alt text-4xl text-red-500 mb-2"></i>
+                <span class="font-medium">Git</span>
+            </div>
+            
+            <!-- Skill 8 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fab fa-figma text-4xl text-purple-400 mb-2"></i>
+                <span class="font-medium">Figma</span>
+            </div>
+            
+            <!-- Skill 9 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fab fa-flutter text-4xl text-blue-400 mb-2"></i>
+                <span class="font-medium">Flutter</span>
+            </div>
+            
+            <!-- Skill 10 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fas fa-code text-4xl text-green-600 mb-2"></i>
+                <span class="font-medium">Dart</span>
+            </div>
+            
+            <!-- Skill 11 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fas fa-table text-4xl text-yellow-400 mb-2"></i>
+                <span class="font-medium">Pandas</span>
+            </div>
+            
+            <!-- Skill 12 -->
+            <div class="skill-badge bg-white dark:bg-gray-700 rounded-xl p-6 flex flex-col items-center justify-center shadow-sm transition duration-300">
+                <i class="fas fa-chart-line text-4xl text-blue-300 mb-2"></i>
+                <span class="font-medium">Matplotlib</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates" class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 text-center text-secondary dark:text-accent">Certificates</h2>
+        
+        <div class="space-y-6">
+            <!-- Certificate 1 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Machine Learning Terapan</h3>
+                        <p class="text-gray-600 dark:text-gray-300">DBS Foundation • 2025</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <a href="#" class="text-secondary dark:text-accent hover:underline flex items-center gap-1">
+                            <i class="fas fa-external-link-alt"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certificate 2 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Fundamental Deep Learning</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Dicoding • 2024</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <a href="#" class="text-secondary dark:text-accent hover:underline flex items-center gap-1">
+                            <i class="fas fa-external-link-alt"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certificate 3 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Analisis Data dengan Python</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Dicoding • 2024</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <a href="#" class="text-secondary dark:text-accent hover:underline flex items-center gap-1">
+                            <i class="fas fa-external-link-alt"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Certificate 4 -->
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h3 class="text-xl font-bold mb-1">Fundamental Pemrosesan Data</h3>
+                        <p class="text-gray-600 dark:text-gray-300">Dicoding • 2023</p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <a href="#" class="text-secondary dark:text-accent hover:underline flex items-center gap-1">
+                            <i class="fas fa-external-link-alt"></i> View Certificate
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto bg-gray-50 dark:bg-gray-800/50 rounded-3xl my-8">
+        <h2 class="text-3xl font-bold mb-12 text-center text-secondary dark:text-accent">What People Say</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Sarah Johnson</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">Senior Data Scientist at TechCorp</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 italic">
+                    "Ilyas has an exceptional ability to translate complex data into actionable insights. His machine learning project demonstrated both technical depth and practical business relevance."
+                </p>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="bg-white dark:bg-gray-700 p-6 rounded-xl shadow-sm">
+                <div class="flex items-center mb-4">
+                    <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="w-full h-full object-cover">
+                    </div>
+                    <div>
+                        <h4 class="font-bold">Michael Chen</h4>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">AI Research Lead at DataLabs</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 dark:text-gray-300 italic">
+                    "Working with Ilyas on our NLP project was a pleasure. His attention to detail and problem-solving skills are outstanding. He consistently delivered high-quality results ahead of schedule."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 text-center text-secondary dark:text-accent">Get In Touch</h2>
+        
+        <div class="flex flex-col lg:flex-row gap-12">
+            <div class="lg:w-1/2">
+                <h3 class="text-xl font-bold mb-6">Contact Information</h3>
+                
+                <div class="space-y-6">
+                    <div class="flex items-start">
+                        <div class="bg-secondary dark:bg-accent text-white p-3 rounded-lg mr-4">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Email</h4>
+                            <a href="mailto:ilyas@example.com" class="text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">ilyas@example.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-secondary dark:bg-accent text-white p-3 rounded-lg mr-4">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Phone</h4>
+                            <a href="tel:+6281234567890" class="text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">+62 812 3456 7890</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-secondary dark:bg-accent text-white p-3 rounded-lg mr-4">
+                            <i class="fab fa-linkedin-in"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium">LinkedIn</h4>
+                            <a href="https://linkedin.com" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">linkedin.com/in/ilyas-imam</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-secondary dark:bg-accent text-white p-3 rounded-lg mr-4">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium">GitHub</h4>
+                            <a href="https://github.com" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">github.com/ilyas-imam</a>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <div class="bg-secondary dark:bg-accent text-white p-3 rounded-lg mr-4">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-medium">Location</h4>
+                            <p class="text-gray-600 dark:text-gray-300">Jakarta, Indonesia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="lg:w-1/2">
+                <h3 class="text-xl font-bold mb-6">Send Me a Message</h3>
+                
+                <form class="space-y-4">
+                    <div>
+                        <label for="name" class="block mb-2 font-medium">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-secondary dark:focus:ring-accent bg-white dark:bg-gray-700 transition">
+                    </div>
+                    
+                    <div>
+                        <label for="email" class="block mb-2 font-medium">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-secondary dark:focus:ring-accent bg-white dark:bg-gray-700 transition">
+                    </div>
+                    
+                    <div>
+                        <label for="message" class="block mb-2 font-medium">Message</label>
+                        <textarea id="message" rows="5" class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-secondary dark:focus:ring-accent bg-white dark:bg-gray-700 transition"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="px-6 py-3 bg-secondary dark:bg-accent text-white rounded-lg hover:bg-opacity-90 transition shadow-lg w-full">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-100 dark:bg-gray-800 py-8">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-gray-600 dark:text-gray-300">
+                        &copy; 2024 Ilyas Imam Ibrahim. All rights reserved.
+                    </p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://linkedin.com" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">
+                        <i class="fab fa-linkedin text-xl"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">
+                        <i class="fab fa-github text-xl"></i>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">
+                        <i class="fab fa-twitter text-xl"></i>
+                    </a>
+                    <a href="mailto:ilyas@example.com" class="text-gray-600 dark:text-gray-300 hover:text-secondary dark:hover:text-accent transition">
+                        <i class="fas fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+        
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+            themeIcon.classList.replace('fa-moon', 'fa-sun');
+            mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+            document.documentElement.classList.remove('dark');
+            themeIcon.classList.replace('fa-sun', 'fa-moon');
+            mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
+        }
+        
+        const toggleTheme = () => {
+            if (localStorage.getItem('color-theme')) {
+                if (localStorage.getItem('color-theme') === 'light') {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                    mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                    mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
+                }
+            } else {
+                if (document.documentElement.classList.contains('dark')) {
+                    document.documentElement.classList.remove('dark');
+                    localStorage.setItem('color-theme', 'light');
+                    themeIcon.classList.replace('fa-sun', 'fa-moon');
+                    mobileThemeIcon.classList.replace('fa-sun', 'fa-moon');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    localStorage.setItem('color-theme', 'dark');
+                    themeIcon.classList.replace('fa-moon', 'fa-sun');
+                    mobileThemeIcon.classList.replace('fa-moon', 'fa-sun');
+                }
+            }
+        };
+        
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
