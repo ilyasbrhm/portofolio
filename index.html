@@ -91,12 +91,14 @@
     menuBtn.addEventListener("click", function () {
       mobileMenu.classList.toggle("hidden");
     });
-
-    // Optional: Close mobile menu on page load (in case it's open accidentally)
-    if (!mobileMenu.classList.contains("hidden")) {
-      mobileMenu.classList.add("hidden");
-    }
   });
+
+    // Close mobile menu on link click
+    document.querySelectorAll("#mobile-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+    });
 </script>
 
     <style>
