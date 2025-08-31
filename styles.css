@@ -1,0 +1,71 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8fafc;
+  color: #1e293b;
+  transition: background-color 0.3s, color 0.3s;
+}
+.dark body {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+.gradient-text {
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #3b82f6, #6366f1);
+}
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+.skill-badge:hover {
+  transform: scale(1.05);
+}
+.toggle-checkbox:checked {
+  right: 0;
+  background-color: #1e293b;
+}
+.toggle-checkbox:checked + .toggle-label {
+  background-color: #6366f1;
+}
+.nav-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #6366f1;
+  transition: width 0.3s;
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+.active-nav::after {
+  width: 100%;
+}
+.timeline-item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 24px;
+  height: calc(100% - 24px);
+  width: 2px;
+  background-color: #cbd5e1;
+}
+.dark .timeline-item:not(:last-child)::after {
+  background-color: #334155;
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

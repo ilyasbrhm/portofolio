@@ -1,175 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth dark">
 <head>
-    <script>
-      // Dark mode check before CSS applies
-      if (
-        localStorage.getItem("theme") === "dark" ||
-        (!localStorage.getItem("theme") &&
-          window.matchMedia("(prefers-color-scheme: dark)").matches)
-      ) {
-        document.documentElement.classList.add("dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-      }
-    </script>
+    <link rel="stylesheet" href="styles.css"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ilyas Ibrahim | Data Analyst & ML Engineer</title>
     <link rel="icon" type="image/png" href="icon.png">
+    <script defer src="script.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: {
-                        poppins: ['Poppins', 'sans-serif'],
-                    },
-                    colors: {
-                        navy: {
-                            50: '#f0f4ff',
-                            100: '#dde6ff',
-                            200: '#c2d3ff',
-                            300: '#9cb5ff',
-                            400: '#758bff',
-                            500: '#5662ff',
-                            600: '#3d3cf7',
-                            700: '#312ed9',
-                            800: '#2928af',
-                            900: '#292989',
-                            950: '#16164e',
-                        },
-                        cyan: {
-                            50: '#ecfeff',
-                            100: '#cffafe',
-                            200: '#a5f3fc',
-                            300: '#67e8f9',
-                            400: '#22d3ee',
-                            500: '#06b6d4',
-                            600: '#0891b2',
-                            700: '#0e7490',
-                            800: '#155e75',
-                            900: '#164e63',
-                            950: '#083344',
-                        }
-                    }
-                }
-            }
-        }
-    </script>
-    <script>
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.getElementById("toggle");
-    const html = document.documentElement;
-    const menuBtn = document.getElementById("menu-btn");
-    const mobileMenu = document.getElementById("mobile-menu");
-
-    // Load saved theme
-    if (localStorage.getItem("theme") === "dark") {
-      html.classList.add("dark");
-      toggle.checked = true;
-    } else {
-      html.classList.remove("dark");
-      toggle.checked = false;
-    }
-
-    // Toggle theme
-    toggle.addEventListener("change", function () {
-      if (toggle.checked) {
-        html.classList.add("dark");
-        localStorage.setItem("theme", "dark");
-      } else {
-        html.classList.remove("dark");
-        localStorage.setItem("theme", "light");
-      }
-    });
-
-    // Toggle mobile menu
-    menuBtn.addEventListener("click", function () {
-      mobileMenu.classList.toggle("hidden");
-    });
-  });
-
-    // Close mobile menu on link click
-    document.querySelectorAll("#mobile-menu a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.add("hidden");
-      });
-    });
-</script>
-
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
-            transition: background-color 0.3s, color 0.3s;
-        }
-        .dark body {
-            background-color: #0f172a;
-            color: #f8fafc;
-        }
-        .gradient-text {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            background-image: linear-gradient(90deg, #3b82f6, #6366f1);
-        }
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        .skill-badge:hover {
-            transform: scale(1.05);
-        }
-        .toggle-checkbox:checked {
-            right: 0;
-            background-color: #1e293b;
-        }
-        .toggle-checkbox:checked + .toggle-label {
-            background-color: #6366f1;
-        }
-        .nav-link::after {
-            content: '';
-            display: block;
-            width: 0;
-            height: 2px;
-            background: #6366f1;
-            transition: width 0.3s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        .active-nav::after {
-            width: 100%;
-        }
-        .timeline-item:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            left: 7px;
-            top: 24px;
-            height: calc(100% - 24px);
-            width: 2px;
-            background-color: #cbd5e1;
-        }
-        .dark .timeline-item:not(:last-child)::after {
-            background-color: #334155;
-        }
-        .animate-float {
-            animation: float 3s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-            100% { transform: translateY(0px); }
-        }
-    </style>
 </head>
 <body class="font-poppins antialiased">
     <!-- Header & Navigation -->
@@ -1006,84 +848,136 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 bg-white dark:bg-slate-900">
-        <div class="container mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-navy-700 dark:text-white mb-4">
-                    Get In <span class="gradient-text">Touch</span>
-                </h2>
-                <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-navy-700 mx-auto"></div>
-                <p class="text-lg text-slate-600 dark:text-slate-300 mt-4 max-w-2xl mx-auto">
-                    Feel free to reach out for collaborations or just to say hello!
-                </p>
+   <!-- Contact Section -->
+<section id="contact" class="py-20 px-6 bg-white dark:bg-slate-900">
+  <div class="container mx-auto">
+    <!-- Heading -->
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white mb-4">
+        Get In <span class="bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">Touch</span>
+      </h2>
+      <div class="w-20 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto"></div>
+      <p class="text-lg text-slate-600 dark:text-slate-300 mt-4 max-w-2xl mx-auto">
+        Feel free to reach out for collaborations or just to say hello!
+      </p>
+    </div>
+
+    <div class="flex flex-col lg:flex-row gap-12">
+      <!-- Contact Info -->
+      <div class="lg:w-1/2">
+        <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-2xl shadow-lg">
+          <h3 class="text-2xl font-bold text-slate-800 dark:text-white mb-6">Contact Information</h3>
+
+          <div class="space-y-6">
+            <!-- Email -->
+            <div class="flex items-start">
+              <div class="w-10 h-10 bg-cyan-100 dark:bg-cyan-900 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-envelope text-cyan-500 dark:text-cyan-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-800 dark:text-white">Email</h4>
+                <a href="mailto:ilyasbrhm0@gmail.com" class="text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition">ilyasbrhm0@gmail.com</a>
+              </div>
             </div>
-            
-            <div class="flex flex-col lg:flex-row gap-12">
-                <div class="lg:w-1/2">
-                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-md">
-                        <h3 class="text-2xl font-bold text-navy-700 dark:text-white mb-6">Contact Information</h3>
-                        
-                        <div class="space-y-6">
-                            <div class="flex items-start">
-                                <div class="w-10 h-10 bg-cyan-100 dark:bg-cyan-900 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-envelope text-cyan-500 dark:text-cyan-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-navy-700 dark:text-white mb-1">Email</h4>
-                                    <a href="mailto:ilyasbrhm0@gmail.com" class="text-slate-600 dark:text-slate-300 hover:text-cyan-500 dark:hover:text-cyan-400 transition duration-300">ilyasbrhm0@gmail.com</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-phone-alt text-purple-500 dark:text-purple-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-navy-700 dark:text-white mb-1">Phone</h4>
-                                    <a href="tel:+6285215246240" class="text-slate-600 dark:text-slate-300 hover:text-purple-500 dark:hover:text-purple-400 transition duration-300">(+62) 852-1524-6240</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fab fa-linkedin-in text-blue-500 dark:text-blue-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-navy-700 dark:text-white mb-1">LinkedIn</h4>
-                                    <a href="https://linkedin.com/in/ilyasbrhm" target="_blank" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition duration-300">linkedin.com/in/ilyasbrhm</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-10 h-10 bg-gray-100 dark:bg-gray-900 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fab fa-github text-gray-700 dark:text-gray-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-navy-700 dark:text-white mb-1">GitHub</h4>
-                                    <a href="https://github.com/ilyasbrhm" target="_blank" class="text-slate-600 dark:text-slate-300 hover:text-gray-700 dark:hover:text-gray-400 transition duration-300">github.com/ilyasbrhm</a>
-                                </div>
-                            </div>
-                            
-                            <div class="flex items-start">
-                                <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mr-4">
-                                    <i class="fas fa-map-marker-alt text-indigo-500 dark:text-indigo-400"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-navy-700 dark:text-white mb-1">Location</h4>
-                                    <a>Jakarta, indonesia</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="lg:w-1/2">
-                    <div class="bg-slate-50 dark:bg-slate-800 p-8 rounded-xl shadow-md">
-                        <h3 class="text-2xl font-bold text-navy-700 dark:text-white mb-6">Send Me a Message</h3>
-                        
-                        <form id="contact-form" class="space-y-6">
-                            <div>
-                                <label for="name" class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-
+
+            <!-- Phone -->
+            <div class="flex items-start">
+              <div class="w-10 h-10 bg-purple-100 dark:bg-purple-900 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-phone-alt text-purple-500 dark:text-purple-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-800 dark:text-white">Phone</h4>
+                <a href="tel:+6285215246240" class="text-slate-600 dark:text-slate-300 hover:text-purple-500 dark:hover:text-purple-400 transition">(+62) 852-1524-6240</a>
+              </div>
+            </div>
+
+            <!-- LinkedIn -->
+            <div class="flex items-start">
+              <div class="w-10 h-10 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center mr-4">
+                <i class="fab fa-linkedin-in text-blue-500 dark:text-blue-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-800 dark:text-white">LinkedIn</h4>
+                <a href="https://linkedin.com/in/ilyasbrhm" target="_blank" class="text-slate-600 dark:text-slate-300 hover:text-blue-500 dark:hover:text-blue-400 transition">linkedin.com/in/ilyasbrhm</a>
+              </div>
+            </div>
+
+            <!-- GitHub -->
+            <div class="flex items-start">
+              <div class="w-10 h-10 bg-gray-100 dark:bg-gray-900 rounded-full flex items-center justify-center mr-4">
+                <i class="fab fa-github text-gray-700 dark:text-gray-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-800 dark:text-white">GitHub</h4>
+                <a href="https://github.com/ilyasbrhm" target="_blank" class="text-slate-600 dark:text-slate-300 hover:text-gray-700 dark:hover:text-gray-400 transition">github.com/ilyasbrhm</a>
+              </div>
+            </div>
+
+            <!-- Location -->
+            <div class="flex items-start">
+              <div class="w-10 h-10 bg-indigo-100 dark:bg-indigo-900 rounded-full flex items-center justify-center mr-4">
+                <i class="fas fa-map-marker-alt text-indigo-500 dark:text-indigo-400"></i>
+              </div>
+              <div>
+                <h4 class="font-semibold text-slate-800 dark:text-white">Location</h4>
+                <p class="text-slate-600 dark:text-slate-300">Jakarta, Indonesia</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="lg:w-1/2">
+        <form
+          action="https://formspree.io/f/xovwygke"
+          method="POST"
+          class="backdrop-blur-md bg-white/10 dark:bg-slate-800/50 p-8 rounded-2xl shadow-lg"
+        >
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <input
+              type="text"
+              name="name"
+              placeholder="Nama Lengkap"
+              required
+              class="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              required
+              class="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            />
+          </div>
+
+          <div class="mb-6">
+            <input
+              type="text"
+              name="subject"
+              placeholder="Subjek"
+              required
+              class="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            />
+          </div>
+
+          <div class="mb-6">
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Pesan Anda..."
+              required
+              class="w-full px-4 py-3 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-cyan-400"
+            ></textarea>
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-3 rounded-lg font-medium text-white bg-gradient-to-r from-cyan-400 to-blue-600 hover:opacity-90 transition">
+            Kirim Pesan
+          </button>
+        </form>
+      </div>
+
 </body>
 </html>
